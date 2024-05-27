@@ -18,7 +18,6 @@ namespace Pharmachy_Administration
         OracleConnection con = new OracleConnection("Data Source=localhost:1521/xe;User Id=system;Password=admin123;");
         OracleCommand command;
         OracleDataAdapter adapter;
-        DataSet ds;
         DataTable dt;
 
         public Form1()
@@ -55,6 +54,7 @@ namespace Pharmachy_Administration
             string name = drug_name.Text;
             string exp_date = drug_exp_date.Value.ToString().Split(' ')[0];
             string description = drug_description.Text;
+            string price = drug_price.Text;
             string quantity_b = drug_quantity_b.Text;
             string quantity_p = drug_quantity_p.Text;
 
@@ -76,6 +76,12 @@ namespace Pharmachy_Administration
                 return;
             }
 
+            if (price.Length == 0)
+            {
+                MessageBox.Show("You should enter the price!");
+                return;
+            }
+
             if (description.Length == 0)
             {
                 MessageBox.Show("You should enter a description!");
@@ -92,7 +98,7 @@ namespace Pharmachy_Administration
 
             int id = Convert.ToInt32(result) + 1;
  
-            string insertQuery = "insert into drugs (id, name, expiration_date, description, quantity) values('" + id + "', '" + name + "', TO_DATE ('" + exp_date +"', 'MM-DD-YY'), '" + description + "', '" + quantity_b + "x" + quantity_p + "')";
+            string insertQuery = "insert into drugs (id, name, expiration_date, price, description, quantity) values('" + id + "', '" + name + "', TO_DATE ('" + exp_date +"', 'MM-DD-YY'), '" + "', '" + price + "', '"  + description + "', '" + quantity_b + "x" + quantity_p + "')";
 
             command = new OracleCommand(insertQuery, con);
             command.ExecuteNonQuery();
@@ -100,16 +106,16 @@ namespace Pharmachy_Administration
             InitializeData();
         }
 
-        string deleteIndex = null;
+        string actionIndex = null;
         private void button3_Click(object sender, EventArgs e)
         {
-            if(deleteIndex == null)
+            if(actionIndex == null)
             {
                 MessageBox.Show("You should select an id from the table!");
                 return;
             }
 
-            string deleteQuery = "delete from drugs where id = '" + deleteIndex + "'";
+            string deleteQuery = "delete from drugs where id = '" + actionIndex + "'";
 
             con.Open();
             command = new OracleCommand(deleteQuery, con);
@@ -117,15 +123,27 @@ namespace Pharmachy_Administration
             con.Close();
             InitializeData();
 
-            deleteIndex = null;
+            actionIndex = null;
+        }
+
+        private void button5_Click(object sender, EventArgs e)
+        {
+
         }
 
         private void dataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             if (e.RowIndex >= 0 && e.ColumnIndex == 0)
             {
-                deleteIndex = dataGridView1.Rows[e.RowIndex].Cells[e.ColumnIndex].Value.ToString();
+                actionIndex = dataGridView1.Rows[e.RowIndex].Cells[e.ColumnIndex].Value.ToString();
             }
+        }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+            Form2 form = new Form2();
+            form.StartPosition = FormStartPosition.CenterParent;
+            form.ShowDialog();
         }
     }
 }

@@ -33,3 +33,5 @@ C:\Users\Cristian\Desktop\Pharmachy-Administration\Pharmachy-Administration\bin\
 C:\Users\Cristian\Desktop\Pharmachy-Administration\Pharmachy-Administration\bin\Debug\System.Threading.Tasks.Extensions.xml
 C:\Users\Cristian\Desktop\Pharmachy-Administration\Pharmachy-Administration\bin\Debug\System.ValueTuple.xml
 C:\Users\Cristian\Desktop\Pharmachy-Administration\Pharmachy-Administration\obj\Debug\Pharmachy-Administration.csproj.CopyComplete
+C:\Users\Cristian\Desktop\Pharmachy-Administration\Pharmachy-Administration\obj\Debug\Pharmachy_Administration.Form2.resources
+C:\Users\Cristian\Desktop\Pharmachy-Administration\Pharmachy-Administration\obj\Debug\Pharmachy_Administration.Form3.resources

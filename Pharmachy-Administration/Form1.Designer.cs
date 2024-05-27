@@ -45,6 +45,10 @@
             this.drug_quantity_p = new System.Windows.Forms.TextBox();
             this.label7 = new System.Windows.Forms.Label();
             this.button3 = new System.Windows.Forms.Button();
+            this.button4 = new System.Windows.Forms.Button();
+            this.button5 = new System.Windows.Forms.Button();
+            this.drug_price = new System.Windows.Forms.TextBox();
+            this.label8 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.fileSystemWatcher1)).BeginInit();
             this.SuspendLayout();
@@ -94,7 +98,7 @@
             // 
             this.drug_description.CausesValidation = false;
             this.drug_description.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel, ((byte)(0)));
-            this.drug_description.Location = new System.Drawing.Point(742, 311);
+            this.drug_description.Location = new System.Drawing.Point(742, 379);
             this.drug_description.Multiline = true;
             this.drug_description.Name = "drug_description";
             this.drug_description.Size = new System.Drawing.Size(287, 124);
@@ -134,7 +138,7 @@
             // 
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Pixel, ((byte)(0)));
-            this.label6.Location = new System.Drawing.Point(738, 287);
+            this.label6.Location = new System.Drawing.Point(738, 356);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(100, 20);
             this.label6.TabIndex = 9;
@@ -170,7 +174,7 @@
             // button2
             // 
             this.button2.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Pixel, ((byte)(0)));
-            this.button2.Location = new System.Drawing.Point(742, 441);
+            this.button2.Location = new System.Drawing.Point(742, 509);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(287, 31);
             this.button2.TabIndex = 13;
@@ -208,7 +212,7 @@
             // button3
             // 
             this.button3.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Pixel, ((byte)(0)));
-            this.button3.Location = new System.Drawing.Point(607, 439);
+            this.button3.Location = new System.Drawing.Point(607, 441);
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(86, 32);
             this.button3.TabIndex = 17;
@@ -216,11 +220,55 @@
             this.button3.UseVisualStyleBackColor = true;
             this.button3.Click += new System.EventHandler(this.button3_Click);
             // 
+            // button4
+            // 
+            this.button4.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Pixel, ((byte)(0)));
+            this.button4.Location = new System.Drawing.Point(152, 441);
+            this.button4.Name = "button4";
+            this.button4.Size = new System.Drawing.Size(75, 30);
+            this.button4.TabIndex = 18;
+            this.button4.Text = "Sales";
+            this.button4.UseVisualStyleBackColor = true;
+            this.button4.Click += new System.EventHandler(this.button4_Click);
+            // 
+            // button5
+            // 
+            this.button5.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Pixel, ((byte)(0)));
+            this.button5.Location = new System.Drawing.Point(515, 441);
+            this.button5.Name = "button5";
+            this.button5.Size = new System.Drawing.Size(75, 31);
+            this.button5.TabIndex = 19;
+            this.button5.Text = "Sell";
+            this.button5.UseVisualStyleBackColor = true;
+            this.button5.Click += new System.EventHandler(this.button5_Click);
+            // 
+            // drug_price
+            // 
+            this.drug_price.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel, ((byte)(0)));
+            this.drug_price.Location = new System.Drawing.Point(743, 318);
+            this.drug_price.Name = "drug_price";
+            this.drug_price.Size = new System.Drawing.Size(286, 26);
+            this.drug_price.TabIndex = 20;
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Pixel, ((byte)(0)));
+            this.label8.Location = new System.Drawing.Point(744, 295);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(49, 20);
+            this.label8.TabIndex = 21;
+            this.label8.Text = "Price";
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(5F, 9F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1071, 539);
+            this.ClientSize = new System.Drawing.Size(1071, 566);
+            this.Controls.Add(this.label8);
+            this.Controls.Add(this.drug_price);
+            this.Controls.Add(this.button5);
+            this.Controls.Add(this.button4);
             this.Controls.Add(this.button3);
             this.Controls.Add(this.label7);
             this.Controls.Add(this.drug_quantity_p);
@@ -267,6 +315,10 @@
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.TextBox drug_quantity_p;
         private System.Windows.Forms.Button button3;
+        private System.Windows.Forms.Button button4;
+        private System.Windows.Forms.Button button5;
+        private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.TextBox drug_price;
     }
 }
 
