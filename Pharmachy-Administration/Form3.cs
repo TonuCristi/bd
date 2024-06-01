@@ -73,7 +73,7 @@ namespace Pharmachy_Administration
             command.ExecuteNonQuery();
             con.Close();
 
-            Form1 form = new Form1();
+            Form1 form = new Form1(id, username);
             form.StartPosition = FormStartPosition.CenterParent;
             form.ShowDialog();
 
@@ -97,24 +97,55 @@ namespace Pharmachy_Administration
                 return;
             }
 
-            string query = "SELECT COUNT(*) FROM users WHERE name = '" + username + "' AND password = '" + password + "'";
+            string query = "SELECT id FROM users WHERE name = '" + username + "' AND password = '" + password + "'";
 
             con.Open();
 
             command = new OracleCommand(query, con);
 
-            int count = Convert.ToInt32(command.ExecuteScalar());
+            int id = Convert.ToInt32(command.ExecuteScalar());
 
             command.ExecuteNonQuery();
             con.Close();
 
-            if (count > 0)
+            if (id > 0)
             {
-                Form1 form = new Form1();
+                Form1 form = new Form1(id, username);
                 form.StartPosition = FormStartPosition.CenterParent;
                 form.ShowDialog();
 
                 this.Close();
+            }
+        }
+
+        private void Form3_Load(object sender, EventArgs e)
+        {
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            if(button3.Text == "S")
+            {
+                button3.Text = "H";
+                textBox2.PasswordChar = '\0';
+            }else
+            {
+                button3.Text = "S";
+                textBox2.PasswordChar = '*';
+            }
+        }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+            if (button4.Text == "S")
+            {
+                button4.Text = "H";
+                textBox3.PasswordChar = '\0';
+            }
+            else
+            {
+                button4.Text = "S";
+                textBox3.PasswordChar = '*';
             }
         }
     }

@@ -4,11 +4,14 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Data.SqlClient;
+using System.Diagnostics;
 using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Xml.Linq;
+
 using Oracle.ManagedDataAccess.Client;
 
 namespace Pharmachy_Administration
@@ -19,11 +22,16 @@ namespace Pharmachy_Administration
         OracleCommand command;
         OracleDataAdapter adapter;
         DataTable dt;
+        int user_id;
+        string user_name = "";
 
-        public Form1()
+        public Form1(int id, string username)
         {
             InitializeComponent();
             InitializeData();
+            user_id = id;
+            user_name = username;
+            label9.Text = username;
         }
 
         public void InitializeData()
@@ -98,11 +106,19 @@ namespace Pharmachy_Administration
 
             int id = Convert.ToInt32(result) + 1;
  
-            string insertQuery = "insert into drugs (id, name, expiration_date, price, description, quantity) values('" + id + "', '" + name + "', TO_DATE ('" + exp_date +"', 'MM-DD-YY'), '" + "', '" + price + "', '"  + description + "', '" + quantity_b + "x" + quantity_p + "')";
+            string insert = "insert into drugs (id, name, expiration_date, description, price, quantity) values('" + id + "', '" + name + "', TO_DATE ('" + exp_date + "', 'DD-MM-YY'), '" + description + "', '" + price + "', '" + quantity_b  +"x" + quantity_p + "')";
 
-            command = new OracleCommand(insertQuery, con);
+            command = new OracleCommand(insert, con);
             command.ExecuteNonQuery();
             con.Close();
+
+            drug_name.Text = "";
+            drug_description.Text = "";
+            drug_exp_date.ResetText();
+            drug_price.Text = "";
+            drug_quantity_b.Text = "";
+            drug_quantity_p.Text = "";
+
             InitializeData();
         }
 
@@ -128,7 +144,27 @@ namespace Pharmachy_Administration
 
         private void button5_Click(object sender, EventArgs e)
         {
+            if (actionIndex == null)
+            {
+                MessageBox.Show("You should select an id from the table!");
+                return;
+            }
 
+            string getLastIdQuery = "select max(id) from sales";
+
+            con.Open();
+
+            command = new OracleCommand(getLastIdQuery, con);
+
+            object result = command.ExecuteScalar();
+
+            int id = Convert.ToInt32(result) + 1;
+
+            string insert = "insert into sales (id, user_id, drug_id) values('" + id + "', '" + user_id + "', '" + actionIndex + "')";
+            
+            command = new OracleCommand(insert, con);
+            command.ExecuteNonQuery();
+            con.Close();
         }
 
         private void dataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
@@ -141,7 +177,7 @@ namespace Pharmachy_Administration
 
         private void button4_Click(object sender, EventArgs e)
         {
-            Form2 form = new Form2();
+            Form2 form = new Form2(user_id, user_name);
             form.StartPosition = FormStartPosition.CenterParent;
             form.ShowDialog();
         }
